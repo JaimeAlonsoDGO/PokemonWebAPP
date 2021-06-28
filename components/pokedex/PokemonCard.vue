@@ -17,13 +17,16 @@
     <div
       v-else
       class="
+        relative
         appearAnimation
-        border border-gray-200
+        border border-blue-200
         p-2
         flex
         items-center
         cursor-pointer
-        hover:bg-gray-500 hover:transform hover:scale-110 hover:text-white
+        hover:bg-blue-900 hover:transform hover:scale-110
+        text-blue-900
+        hover:text-white
         rounded-md
       "
     >
@@ -35,6 +38,24 @@
       <h3 class="mx-auto font-bold">
         {{ pokemonName.name.charAt(0).toUpperCase() + pokemonName.name.slice(1) }}
       </h3>
+      <div
+        class="
+          border-2 border-blue-200
+          rounded-full
+          w-8
+          h-8
+          absolute
+          top-2
+          right-2
+          flex
+          items-center
+          justify-center
+          font-bold
+          text-xs
+        "
+      >
+        {{ pokemonNumber }}
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +66,10 @@
         type: Object,
         default: {},
       },
+      pokemonNumber: {
+        type: String,
+        default: '',
+      },
     },
     data() {
       return {
@@ -53,6 +78,7 @@
     },
     async fetch() {
       this.pokemonGeneralData = await fetch(this.pokemonName.url + '').then((res) => res.json());
+      console.log(this.pokemonGeneralData);
     },
   };
 </script>

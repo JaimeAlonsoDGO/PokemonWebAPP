@@ -16,7 +16,12 @@
       <h1 class="font-bold text-center text-4xl text-blue-700">POKEDEX</h1>
       <img src="~/assets/svg/PokeballColor.svg" class="w-10" />
     </div>
-    <PokemonCard v-for="(pokemon, index) in pokedexData" :key="index" :pokemonName="pokemon" />
+    <PokemonCard
+      v-for="(pokemon, index) in pokedexData"
+      :key="index"
+      :pokemonName="pokemon"
+      :pokemonNumber="index + 1"
+    />
   </div>
 </template>
 <script>
@@ -26,7 +31,7 @@
       PokemonCard,
     },
     async mounted() {
-      await fetch('https://pokeapi.co/api/v2/pokemon?limit=40')
+      await fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
         .then((response) => response.json())
         .then((data) => {
           this.pokedexData = data.results;
