@@ -33,7 +33,7 @@
       <img
         :src="pokemonGeneralData.sprites.front_default"
         alt="Pokemon Image"
-        class="bg-gray-100"
+        class="bg-blue-100 rounded-md"
       />
       <h3 class="mx-auto font-bold">
         {{ pokemonName.name.charAt(0).toUpperCase() + pokemonName.name.slice(1) }}

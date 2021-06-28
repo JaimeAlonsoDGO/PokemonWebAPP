@@ -31,7 +31,7 @@
       PokemonCard,
     },
     async mounted() {
-      await fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
+      await fetch('https://pokeapi.co/api/v2/pokemon?limit=200')
         .then((response) => response.json())
         .then((data) => {
           this.pokedexData = data.results;
@@ -40,7 +40,6 @@
     data() {
       return {
         pokedexData: '',
-        pokemonData: '',
       };
     },
   };
