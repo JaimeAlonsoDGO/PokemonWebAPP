@@ -54,7 +54,7 @@
           text-xs
         "
       >
-        {{ pokemonNumber }}
+        {{ pokemonGeneralData.id }}
       </div>
     </div>
   </div>
@@ -65,10 +65,6 @@
       pokemonName: {
         type: Object,
         default: {},
-      },
-      pokemonNumber: {
-        type: String,
-        default: '',
       },
     },
     data() {

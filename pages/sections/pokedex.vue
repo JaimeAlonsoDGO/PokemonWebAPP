@@ -1,27 +1,19 @@
 <template>
-  <div class="p-4 grid grid-cols-4 gap-4">
-    <div
-      class="
-        col-span-4
-        border border-blue-700
-        p-2
-        rounded-md
-        flex
-        items-center
-        justify-center
-        gap-4
-      "
-    >
+  <div class="p-4">
+    <div class="border border-blue-700 p-4 rounded-md flex items-center justify-center gap-4 mb-4">
       <img src="~/assets/svg/PokeballColor.svg" class="w-10" />
       <h1 class="font-bold text-center text-4xl text-blue-700">POKEDEX</h1>
       <img src="~/assets/svg/PokeballColor.svg" class="w-10" />
     </div>
-    <PokemonCard
-      v-for="(pokemon, index) in pokedexData"
-      :key="index"
-      :pokemonName="pokemon"
-      :pokemonNumber="index + 1"
-    />
+    <div class="grid grid-cols-4 gap-4 mb-4">
+      <PokemonCard v-for="(pokemon, index) in pokedexVisible" :key="index" :pokemonName="pokemon" />
+    </div>
+    <button
+      class="text-center w-full font-bold text-white bg-blue-900 p-2 rounded-md hover:bg-blue-700"
+      @click="toShow += 20"
+    >
+      More
+    </button>
   </div>
 </template>
 <script>
@@ -30,17 +22,23 @@
     components: {
       PokemonCard,
     },
-    async mounted() {
-      await fetch('https://pokeapi.co/api/v2/pokemon?limit=200')
+    async created() {
+      await fetch('https://pokeapi.co/api/v2/pokemon?limit=1118')
         .then((response) => response.json())
         .then((data) => {
-          this.pokedexData = data.results;
+          this.allPokedexData = data.results;
         });
     },
     data() {
       return {
-        pokedexData: '',
+        toShow: 20,
+        allPokedexData: '',
       };
+    },
+    computed: {
+      pokedexVisible() {
+        return this.allPokedexData.slice(0, this.toShow);
+      },
     },
   };
 </script>
