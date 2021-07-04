@@ -2,18 +2,20 @@
   <div>
     <div
       v-if="$fetchState.pending"
-      class="border border-gray-200 p-2 rounded-md flex items-center justify-center gap-4 h-36"
+      class="border border-gray-200 p-2 rounded-md flex items-center gap-4 animate-pulse"
     >
-      <img src="~/assets/svg/PokeballColor.svg" class="w-10 animate-spin" />
-      <h3 class="font-bold animate-pulse">Cargando...</h3>
+      <img src="~/assets/svg/PokeballColor.svg" class="max-w-24 bg-blue-100 rounded-md" />
+      <h3 class="font-bold mx-auto">Loading</h3>
     </div>
+
     <div
       v-else-if="$fetchState.error"
       class="border border-gray-200 p-2 rounded-md flex items-center justify-center gap-4 h-36"
     >
       <img src="~/assets/svg/PokeballColor.svg" class="w-10 animate-spin" />
-      <h3 class="font-bold animate-pulse">Error al cargar recursos</h3>
+      <h3 class="font-bold animate-pulse">Error getting resources</h3>
     </div>
+
     <div
       v-else
       class="
@@ -74,7 +76,6 @@
     },
     async fetch() {
       this.pokemonGeneralData = await fetch(this.pokemonName.url + '').then((res) => res.json());
-      console.log(this.pokemonGeneralData);
     },
   };
 </script>

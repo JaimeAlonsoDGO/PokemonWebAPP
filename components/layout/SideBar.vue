@@ -54,7 +54,6 @@
     methods: {
       routeItem(route) {
         this.routeSelected = route;
-        console.log(this.routeSelected);
       },
     },
   };
