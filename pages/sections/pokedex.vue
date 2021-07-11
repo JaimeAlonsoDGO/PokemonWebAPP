@@ -1,11 +1,5 @@
 <template>
-  <div v-if="$fetchState.pending">
-    <Loading />
-  </div>
-  <div v-else-if="$fetchState.error">
-    <Error />
-  </div>
-  <div v-else class="p-4">
+  <div class="p-4">
     <div class="border border-blue-700 p-4 rounded-md flex items-center justify-center gap-4 mb-4">
       <img src="~/assets/svg/PokeballColor.svg" class="w-10" />
       <h1 class="font-bold text-center text-4xl text-blue-700">POKEDEX</h1>
@@ -13,16 +7,12 @@
     </div>
     <div class="grid grid-cols-4 gap-4 mb-4">
       <PokemonCard
-        v-for="(pokemon, index) in pokedexVisible()"
+        v-for="(pokemon, index) in pokedexDataToShow"
         :key="index"
         :pokemonName="pokemon"
       />
-      <infinite-loading
-        class="col-span-full"
-        spinner="spiral"
-        @infinite="infiniteScroll"
-      ></infinite-loading>
     </div>
+    <infinite-loading spinner="spiral" @infinite="infiniteScroll" />
   </div>
 </template>
 <script>
@@ -35,34 +25,31 @@
       Loading,
       Error,
     },
-    async fetch() {
-      this.allPokedexData = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1118').then(
-        (res) => res.json(),
-      );
+    created() {
+      this.allPokedexData = this.$store.state.data.pokedexData;
+      this.pokedexDataToShow = this.allPokedexData.slice(0, 40);
+      this.lowToShow += 40;
+      this.topToShow += 40;
     },
-    // async created() {
-    //   await fetch('https://pokeapi.co/api/v2/pokemon?limit=1118')
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       this.allPokedexData = data.results;
-    //     });
-    //   this.toShow = 60;
-    // },
     data() {
       return {
-        toShow: 100,
-        allPokedexData: '',
+        topToShow: 40,
+        lowToShow: 0,
+        allPokedexData: [],
+        pokedexDataToShow: [],
       };
     },
     methods: {
-      infiniteScroll() {
-        console.log('Ejecutando infiniteScroll');
-        this.toShow = this.toShow + 60;
-        this.pokedexVisible();
-      },
-      pokedexVisible() {
-        console.log('Ejecutando pokedexVisible');
-        return this.allPokedexData.results.slice(0, this.toShow);
+      infiniteScroll($state) {
+        const newPokemon = this.allPokedexData.slice(this.lowToShow, this.topToShow);
+        if (newPokemon.length) {
+          this.pokedexDataToShow.push(...newPokemon);
+          this.lowToShow += 40;
+          this.topToShow += 40;
+          $state.loaded();
+        } else {
+          $state.complete();
+        }
       },
     },
   };

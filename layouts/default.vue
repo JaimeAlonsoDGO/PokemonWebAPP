@@ -16,5 +16,11 @@
       Sidebar,
       Navbar,
     },
+    async created() {
+      const newPokedexData = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1118').then(
+        (res) => res.json(),
+      );
+      this.$store.commit('updatePokedexData', newPokedexData.results);
+    },
   };
 </script>

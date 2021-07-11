@@ -4,7 +4,7 @@
       v-if="$fetchState.pending"
       class="border border-gray-200 p-2 rounded-md flex items-center gap-4 animate-pulse"
     >
-      <img src="~/assets/svg/PokeballColor.svg" class="max-w-24 bg-blue-100 rounded-md" />
+      <img src="~/assets/svg/PokeballColor.svg" class="w-24 bg-blue-100 rounded-md" />
       <h3 class="font-bold mx-auto">Loading</h3>
     </div>
 
