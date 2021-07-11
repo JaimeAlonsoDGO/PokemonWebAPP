@@ -12,6 +12,7 @@
   "dependencies": {
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
+    "nuxt-vue-multiselect": "^1.0.4",
     "vue-infinite-loading": "^2.4.5"
   },
   "devDependencies": {

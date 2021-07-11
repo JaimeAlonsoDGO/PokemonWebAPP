@@ -4,7 +4,7 @@
       v-if="$fetchState.pending"
       class="border border-gray-200 p-2 rounded-md flex items-center gap-4 animate-pulse"
     >
-      <img src="~/assets/svg/PokeballColor.svg" class="w-24 bg-blue-100 rounded-md" />
+      <div class="w-24 h-24 bg-blue-100 rounded-md" />
       <h3 class="font-bold mx-auto">Loading</h3>
     </div>
 
@@ -12,7 +12,7 @@
       v-else-if="$fetchState.error"
       class="border border-gray-200 p-2 rounded-md flex items-center justify-center gap-4 h-36"
     >
-      <img src="~/assets/svg/PokeballColor.svg" class="w-10 animate-spin" />
+      <div class="w-24 h-24 bg-blue-100 rounded-md" />
       <h3 class="font-bold animate-pulse">Error getting resources</h3>
     </div>
 
@@ -32,11 +32,9 @@
         rounded-md
       "
     >
-      <img
-        :src="pokemonGeneralData.sprites.front_default"
-        alt="Pokemon Image"
-        class="bg-blue-100 rounded-md"
-      />
+      <div class="w-24 h-24 bg-blue-100 rounded-md">
+        <img :src="pokemonGeneralData.sprites.front_default" alt="Pokemon Image" />
+      </div>
       <h3 class="mx-auto font-bold">
         {{ pokemonName.name.charAt(0).toUpperCase() + pokemonName.name.slice(1) }}
       </h3>
@@ -44,8 +42,8 @@
         class="
           border-2 border-blue-200
           rounded-full
-          w-8
-          h-8
+          w-10
+          h-10
           absolute
           top-2
           right-2

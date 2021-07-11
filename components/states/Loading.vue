@@ -1,8 +1,29 @@
 <template>
-  <div class="flex items-center justify-center h-screen">
-    <div>
-      <img src="~/assets/svg/PokeballColor.svg" class="w-48 animate-spin" />
-      <h1 class="text-center text-4xl font-bold text-blue-900 animate-pulse">Loading</h1>
-    </div>
-  </div>
+  <div class="lds-dual-ring"></div>
 </template>
+<style scoped>
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: ' ';
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #1e3a8a;
+    border-color: #1e3a8a transparent #1e3a8a transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>

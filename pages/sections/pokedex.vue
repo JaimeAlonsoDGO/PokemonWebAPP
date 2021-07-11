@@ -5,25 +5,31 @@
       <h1 class="font-bold text-center text-4xl text-blue-700">POKEDEX</h1>
       <img src="~/assets/svg/PokeballColor.svg" class="w-10" />
     </div>
-    <div class="grid grid-cols-4 gap-4 mb-4">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
       <PokemonCard
         v-for="(pokemon, index) in pokedexDataToShow"
         :key="index"
         :pokemonName="pokemon"
       />
     </div>
-    <infinite-loading spinner="spiral" @infinite="infiniteScroll" />
+    <infinite-loading spinner="spiral" @infinite="infiniteScroll">
+      <div slot="spinner" class="text-center text-blue-700">Loading...</div>
+      <div slot="no-more" class="text-center text-blue-700">-That's all-</div>
+      <div slot="no-results" class="text-center text-blue-700">-No results-</div>
+    </infinite-loading>
   </div>
 </template>
 <script>
   import Loading from '~/components/states/Loading.vue';
   import Error from '~/components/states/Error.vue';
   import PokemonCard from '~/components/pokedex/PokemonCard';
+  import Multiselect from 'vue-multiselect';
   export default {
     components: {
       PokemonCard,
       Loading,
       Error,
+      Multiselect,
     },
     created() {
       this.allPokedexData = this.$store.state.data.pokedexData;

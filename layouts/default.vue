@@ -1,9 +1,12 @@
 <template>
   <!-- <div class="h-screen"> -->
-  <!-- <Navbar class="h-16" /> -->
   <div class="h-full grid grid-cols-12">
-    <Sidebar class="h-screen col-span-2 sticky top-0" />
-    <Nuxt class="col-span-10" />
+    <Navbar class="col-span-full h-16 sticky top-0 z-10 lg:hidden" />
+    <Sidebar
+      class="col-span-full z-10 lg:block lg:h-screen lg:col-span-2 sticky top-0"
+      :class="menuVisible.menuVisible"
+    />
+    <Nuxt class="col-span-full lg:col-span-10" />
   </div>
   <!-- </div> -->
 </template>
@@ -21,6 +24,13 @@
         (res) => res.json(),
       );
       this.$store.commit('updatePokedexData', newPokedexData.results);
+    },
+    computed: {
+      menuVisible() {
+        return {
+          menuVisible: this.$store.state.menuVisible,
+        };
+      },
     },
   };
 </script>

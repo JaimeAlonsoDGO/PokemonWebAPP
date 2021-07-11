@@ -1,6 +1,10 @@
 <template>
-  <div class="flex items-center justify-center">
-    <img src="~/assets/svg/PokemonLogo.svg" alt="Pokemon Logo" class="w-2/4 appearAnimation" />
+  <div class="m-auto">
+    <img
+      src="~/assets/svg/PokemonLogo.svg"
+      alt="Pokemon Logo"
+      class="w-screen h-screen appearAnimation"
+    />
   </div>
 </template>
 

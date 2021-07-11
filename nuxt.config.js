@@ -35,7 +35,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['nuxt-vue-multiselect'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

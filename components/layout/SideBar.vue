@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-blue-900 text-white">
+  <div class="bg-blue-900 text-yellow-300">
     <nuxt-link to="/">
       <div
         class="
@@ -10,11 +10,9 @@
           py-5
           px-5
           hover:bg-blue-500
-          border-b border-white
+          border-b border-yellow-300
           rounded-md
         "
-        :class="[routeSelected === 'home' ? selectedClass : unselectedClass]"
-        @click="routeItem('home')"
       >
         <img src="~/assets/svg/Home.svg" class="w-10" />
         <span class="ml-4 text-2xl font-bold">Home</span>
@@ -30,11 +28,9 @@
           py-5
           px-5
           hover:bg-blue-500
-          border-b border-white
+          border-b border-yellow-300
           rounded-md
         "
-        :class="[routeSelected === 'pokedex' ? selectedClass : unselectedClass]"
-        @click="routeItem('pokedex')"
       >
         <img src="~/assets/svg/Pokeball.svg" class="w-10" />
         <span class="ml-4 text-2xl font-bold">Pokedex</span>
@@ -42,19 +38,9 @@
     </nuxt-link>
   </div>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        routeSelected: 'home',
-        selectedClass: 'bg-blue-700',
-        unselectedClass: 'bg-blue-900',
-      };
-    },
-    methods: {
-      routeItem(route) {
-        this.routeSelected = route;
-      },
-    },
-  };
-</script>
+
+<style scoped>
+  a.nuxt-link-exact-active > div {
+    background-color: #1d4ed8;
+  }
+</style>
