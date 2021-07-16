@@ -1,20 +1,20 @@
 <template>
   <div>
     <div
-      v-if="$fetchState.pending"
+      v-if="loading"
       class="border border-gray-200 p-2 rounded-md flex items-center gap-4 animate-pulse"
     >
       <div class="w-24 h-24 bg-blue-100 rounded-md" />
       <h3 class="font-bold mx-auto">Loading</h3>
     </div>
 
-    <div
+    <!-- <div
       v-else-if="$fetchState.error"
       class="border border-gray-200 p-2 rounded-md flex items-center justify-center gap-4 h-36"
     >
       <div class="w-24 h-24 bg-blue-100 rounded-md" />
       <h3 class="font-bold animate-pulse">Error getting resources</h3>
-    </div>
+    </div> -->
 
     <div
       v-else
@@ -67,13 +67,29 @@
         default: {},
       },
     },
+    created() {
+      this.getPokemonData();
+    },
+    updated() {
+      this.getPokemonData();
+    },
     data() {
       return {
         pokemonGeneralData: '',
+        loading: true,
       };
     },
-    async fetch() {
-      this.pokemonGeneralData = await fetch(this.pokemonName.url + '').then((res) => res.json());
+    methods: {
+      async getPokemonData() {
+        try {
+          this.pokemonGeneralData = await fetch(this.pokemonName.url + '').then((res) =>
+            res.json(),
+          );
+          this.loading = false;
+        } catch (error) {
+          console.log(error);
+        }
+      },
     },
   };
 </script>
