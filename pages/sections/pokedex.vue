@@ -94,3 +94,12 @@
     },
   };
 </script>
+<style>
+  .multiselect__option:hover,
+  .multiselect__option::after,
+  .multiselect__option--highlight,
+  .multiselect__option--selected {
+    background-color: #1e3a8a;
+    color: white;
+  }
+</style>
