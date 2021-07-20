@@ -8,14 +8,6 @@
       <h3 class="font-bold mx-auto">Loading</h3>
     </div>
 
-    <!-- <div
-      v-else-if="$fetchState.error"
-      class="border border-gray-200 p-2 rounded-md flex items-center justify-center gap-4 h-36"
-    >
-      <div class="w-24 h-24 bg-blue-100 rounded-md" />
-      <h3 class="font-bold animate-pulse">Error getting resources</h3>
-    </div> -->
-
     <div
       v-else
       class="
@@ -31,12 +23,13 @@
         hover:text-white
         rounded-md
       "
+      @click="updatePokemonDetails(pokemonName['url'])"
     >
       <div class="w-24 h-24 bg-blue-100 rounded-md">
-        <img :src="pokemonGeneralData.sprites.front_default" alt="Pokemon Image" />
+        <img :src="pokemonGeneralData['sprites']['front_default']" alt="Pokemon Image" />
       </div>
       <h3 class="mx-auto font-bold">
-        {{ pokemonName.name.charAt(0).toUpperCase() + pokemonName.name.slice(1) }}
+        {{ pokemonName['name'].charAt(0).toUpperCase() + pokemonName['name'].slice(1) }}
       </h3>
       <div
         class="
@@ -54,7 +47,7 @@
           text-xs
         "
       >
-        {{ pokemonGeneralData.id }}
+        {{ pokemonGeneralData['id'] }}
       </div>
     </div>
   </div>
@@ -89,6 +82,10 @@
         } catch (error) {
           console.log(error);
         }
+      },
+      updatePokemonDetails(URL) {
+        this.$store.dispatch('getPokemonDetails', URL);
+        this.$store.commit('updateLayout', 1);
       },
     },
   };
