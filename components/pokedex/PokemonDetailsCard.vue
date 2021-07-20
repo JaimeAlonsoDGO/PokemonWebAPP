@@ -90,6 +90,9 @@
             </div>
           </div>
         </div>
+        <div class="col-span-full">
+          <ChartBar :data="getDataChart" />
+        </div>
       </div>
     </section>
     <button
@@ -102,9 +105,11 @@
 </template>
 <script>
   import Loading from '~/components/states/Loading.vue';
+  import ChartBar from '~/components/charts/ChartBar.vue';
   export default {
     components: {
       Loading,
+      ChartBar,
     },
     methods: {
       toPokedex() {
@@ -117,6 +122,38 @@
       },
       getLoadingStatus() {
         return this.$store.state.loadingStatus;
+      },
+      getDataChart() {
+        const pokemonStats = this.getPokemonData['stats'];
+        let pokemonDataSet = [];
+        let labels = [];
+        if (pokemonStats) {
+          pokemonStats.map((stat) => {
+            pokemonDataSet.push(stat['base_stat']);
+            labels.push(
+              stat['stat']['name'].charAt(0).toUpperCase() + stat['stat']['name'].slice(1),
+            );
+          });
+          const data = {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Stats',
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: 'rgb(75, 192, 192)',
+                data: pokemonDataSet,
+              },
+            ],
+          };
+          return data;
+        } else return;
       },
     },
   };
