@@ -9,7 +9,12 @@
     },
     extends: Bar,
     mounted() {
-      this.renderChart(this.data);
+      this.renderChart(this.data, {
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
       console.log(this.data);
     },
   };
