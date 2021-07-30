@@ -13,33 +13,103 @@
   export default {
     props: {
       type: {
-        type: Array,
-        default: () => [],
+        type: Object,
+        default: {},
       },
     },
     data() {
       return {
         pokemonTypes: {
-          normal: { name: 'normal', class: 'bg-normal' },
-          fighting: { name: 'fighting', class: 'bg-fighting' },
-          flying: { name: 'flying', class: 'bg-flying' },
-          poison: { name: 'poison', class: 'bg-poison' },
-          ground: { name: 'ground', class: 'bg-ground' },
-          rock: { name: 'rock', class: 'bg-rock' },
-          bug: { name: 'bug', class: 'bg-bug' },
-          ghost: { name: 'ghost', class: 'bg-ghost' },
-          steel: { name: 'steel', class: 'bg-steel' },
-          fire: { name: 'fire', class: 'bg-fire' },
-          water: { name: 'water', class: 'bg-water' },
-          grass: { name: 'grass', class: 'bg-grass' },
-          electric: { name: 'electric', class: 'bg-electric' },
-          psychic: { name: 'psychic', class: 'bg-psychic' },
-          ice: { name: 'ice', class: 'bg-ice' },
-          dragon: { name: 'dragon', class: 'bg-dragon' },
-          dark: { name: 'dark', class: 'bg-dark' },
-          fairy: { name: 'fairy', class: 'bg-fairy' },
-          unknown: { name: 'unknown', class: 'bg-unknown' },
-          shadow: { name: 'shadow', class: 'bg-shadow' },
+          normal: {
+            name: 'normal',
+            class:
+              'hover:text-white text-normal hover:bg-normal bg-transparent border border-normal',
+          },
+          fighting: {
+            name: 'fighting',
+            class:
+              'hover:text-white text-fighting hover:bg-fighting bg-transparent border border-fighting',
+          },
+          flying: {
+            name: 'flying',
+            class:
+              'hover:text-white text-flying hover:bg-flying bg-transparent border border-flying',
+          },
+          poison: {
+            name: 'poison',
+            class:
+              'hover:text-white text-poison hover:bg-poison bg-transparent border border-poison',
+          },
+          ground: {
+            name: 'ground',
+            class:
+              'hover:text-white text-ground hover:bg-ground bg-transparent border border-ground',
+          },
+          rock: {
+            name: 'rock',
+            class: 'hover:text-white text-rock hover:bg-rock bg-transparent border border-rock',
+          },
+          bug: {
+            name: 'bug',
+            class: 'hover:text-white text-bug hover:bg-bug bg-transparent border border-bug',
+          },
+          ghost: {
+            name: 'ghost',
+            class: 'hover:text-white text-ghost hover:bg-ghost bg-transparent border border-ghost',
+          },
+          steel: {
+            name: 'steel',
+            class: 'hover:text-white text-steel hover:bg-steel bg-transparent border border-steel',
+          },
+          fire: {
+            name: 'fire',
+            class: 'hover:text-white text-fire hover:bg-fire bg-transparent border border-fire',
+          },
+          water: {
+            name: 'water',
+            class: 'hover:text-white text-water hover:bg-water bg-transparent border border-water',
+          },
+          grass: {
+            name: 'grass',
+            class: 'hover:text-white text-grass hover:bg-grass bg-transparent border border-grass',
+          },
+          electric: {
+            name: 'electric',
+            class:
+              'hover:text-white text-electric hover:bg-electric bg-transparent border border-electric',
+          },
+          psychic: {
+            name: 'psychic',
+            class:
+              'hover:text-white text-psychic hover:bg-psychic bg-transparent border border-psychic',
+          },
+          ice: {
+            name: 'ice',
+            class: 'hover:text-white text-ice hover:bg-ice bg-transparent border border-ice',
+          },
+          dragon: {
+            name: 'dragon',
+            class:
+              'hover:text-white text-dragon hover:bg-dragon bg-transparent border border-dragon',
+          },
+          dark: {
+            name: 'dark',
+            class: 'hover:text-white text-dark hover:bg-dark bg-transparent border border-dark',
+          },
+          fairy: {
+            name: 'fairy',
+            class: 'hover:text-white text-fairy hover:bg-fairy bg-transparent border border-fairy',
+          },
+          unknown: {
+            name: 'unknown',
+            class:
+              'hover:text-white text-unknown hover:bg-unknown bg-transparent border border-unknown',
+          },
+          shadow: {
+            name: 'shadow',
+            class:
+              'hover:text-white text-shadow hover:bg-shadow bg-transparent border border-shadow',
+          },
         },
       };
     },

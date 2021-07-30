@@ -1,5 +1,8 @@
 <template>
-  <pokedex v-if="$store.state.layoutPokedex === 0" />
+  <pokedex
+    v-if="$store.state.layoutPokedex === 0"
+    :allPokedexData="$store.state.data.pokedexData"
+  />
   <PokemonDetailsCard v-else-if="$store.state.layoutPokedex === 1" />
 </template>
 <script>

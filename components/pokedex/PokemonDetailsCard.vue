@@ -3,7 +3,13 @@
     <Loading />
   </div>
   <div v-else class="px-4 lg:px-36 py-4 lg:py-12">
-    <header class="mb-4 sticky top-0 bg-white">
+    <header class="mb-4 sticky top-0 bg-white z-10">
+      <button
+        class="bg-blue-900 text-white font-bold rounded-md p-2 hover:bg-blue-800 w-full mb-4"
+        @click="toPokedex"
+      >
+        Back to Pokedex
+      </button>
       <h1
         class="
           text-center text-blue-900
@@ -18,12 +24,6 @@
         <span class="opacity-75">No. {{ getPokemonData['id'] }}: </span>
         {{ getPokemonData['name'].charAt(0).toUpperCase() + getPokemonData['name'].slice(1) }}
       </h1>
-      <button
-        class="bg-blue-900 text-white font-bold rounded-md p-2 hover:bg-blue-800 w-full"
-        @click="toPokedex"
-      >
-        Back to Pokedex
-      </button>
     </header>
     <section class="mb-4">
       <div class="bg-blue-900 rounded-md text-white pb-4 mb-4">
