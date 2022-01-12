@@ -23,12 +23,7 @@
           label="name"
           track-by="name"
         />
-        <button
-          class="bg-blue-900 text-white font-bold rounded-md p-2 hover:bg-blue-800"
-          @click="clearFilters"
-        >
-          Remove Filters
-        </button>
+        <CustomButton :action="clearFilters" textButton="Clear Filters" />
       </div>
     </header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
@@ -48,10 +43,11 @@
   </div>
 </template>
 <script>
+  import Multiselect from 'vue-multiselect';
   import Loading from '~/components/states/Loading.vue';
   import Error from '~/components/states/Error.vue';
   import PokemonCard from '~/components/pokedex/PokemonCard';
-  import Multiselect from 'vue-multiselect';
+  import CustomButton from '~/components/buttons/CustomButton';
   export default {
     props: {
       allPokedexData: {
@@ -64,6 +60,7 @@
       Loading,
       Error,
       Multiselect,
+      CustomButton,
     },
     created() {
       this.pokedexDataToShow = this.allPokedexData.slice(0, 40);
