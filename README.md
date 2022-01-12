@@ -1,18 +1,17 @@
 # PokeApiNuxt
 
-## Build Setup
+# Link: https://pokemon-web-app-alpha.vercel.app/
 
-```bash
-# install dependencies
-$ npm install
+This is a site created with NuxtJS using the Pokkemon Api. run generate.
+![Previe Home Page](./assets/readme/home.png)
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## POKEDEX
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+- You can se a complete Pokedex with te image, number and name of the Pokemon, and click on it.
+- Can filter by name.
+  ![Preview of the Pokedex](./assets/readme/Pokedex.png)
 
-# generate static project
-$ npm run generate
-```
+## Pokemon details view
+
+- Yo can see the stats of a Pokemon and a chart with it.
+  ![Preview of Pokemon Details View](./assets/readme/Charizard.png)
