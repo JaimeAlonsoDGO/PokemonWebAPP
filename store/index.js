@@ -40,11 +40,10 @@ export const actions = {
     commit('updateLoadingStatus', true);
     try {
       const pokemonDetails = await fetch(URL).then((res) => res.json());
-      console.log(pokemonDetails);
       commit('updatePokemonDetails', pokemonDetails);
       commit('updateLoadingStatus', false);
     } catch (e) {
-      console.log('Error: ', e);
+      console.log('Error while getting Pokemon Details: ', e);
     }
   },
 };

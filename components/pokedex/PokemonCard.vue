@@ -25,11 +25,11 @@
       "
       @click="updatePokemonDetails(pokemonName['url'])"
     >
-      <div class="w-24 h-24 bg-blue-100 rounded-md">
-        <img :src="pokemonGeneralData['sprites']['front_default']" alt="Pokemon Image" />
+      <div class="w-24 h-24">
+        <CustomImage :imageSrc="pokemonGeneralData['sprites']['front_default']" />
       </div>
       <h3 class="mx-auto font-bold">
-        {{ pokemonName['name'].charAt(0).toUpperCase() + pokemonName['name'].slice(1) }}
+        {{ $helpers.formatCapitalLetter(pokemonName['name']) }}
       </h3>
       <div
         class="
@@ -53,6 +53,8 @@
   </div>
 </template>
 <script>
+  import CustomImage from '../containers/CustomImage';
+
   export default {
     props: {
       pokemonName: {
@@ -65,6 +67,9 @@
     },
     updated() {
       this.getPokemonData();
+    },
+    components: {
+      CustomImage,
     },
     data() {
       return {

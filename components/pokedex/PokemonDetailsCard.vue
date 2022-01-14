@@ -17,20 +17,18 @@
         "
       >
         <span class="opacity-75">No. {{ getPokemonData['id'] }}: </span>
-        {{ getPokemonData['name'].charAt(0).toUpperCase() + getPokemonData['name'].slice(1) }}
+        {{ $helpers.formatCapitalLetter(getPokemonData['name']) }}
       </h1>
     </header>
     <section class="mb-4">
       <DropDown :getPokemonData="getPokemonData" />
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <img
-          :src="
+        <CustomImage
+          :imageSrc="
             getPokemonData['sprites']['other']['official-artwork']['front_default']
               ? getPokemonData['sprites']['other']['official-artwork']['front_default']
               : getPokemonData['sprites']['front_default']
           "
-          class="bg-blue-100 rounded-md w-full"
-          alt="Pokemon Image"
         />
         <ChartBar :data="getDataChart" />
       </div>
@@ -42,12 +40,14 @@
   import ChartBar from '~/components/charts/ChartBar.vue';
   import DropDown from '../containers/DropDown.vue';
   import CustomButton from '../buttons/CustomButton.vue';
+  import CustomImage from '../containers/CustomImage.vue';
   export default {
     components: {
       Loading,
       ChartBar,
       DropDown,
       CustomButton,
+      CustomImage,
     },
     methods: {
       toPokedex() {
@@ -68,9 +68,8 @@
         if (pokemonStats) {
           pokemonStats.map((stat) => {
             pokemonDataSet.push(stat['base_stat']);
-            labels.push(
-              stat['stat']['name'].charAt(0).toUpperCase() + stat['stat']['name'].slice(1),
-            );
+            const name = stat['stat']['name'];
+            labels.push(this.$helpers.formatCapitalLetter(name));
           });
           const data = {
             labels: labels,

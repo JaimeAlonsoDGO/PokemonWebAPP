@@ -1,13 +1,13 @@
 <script>
   import { Bar } from 'vue-chartjs';
   export default {
+    extends: Bar,
     props: {
       data: {
         type: Object,
         default: () => [],
       },
     },
-    extends: Bar,
     mounted() {
       this.renderChart(this.data, {
         options: {
@@ -15,7 +15,6 @@
           maintainAspectRatio: false,
         },
       });
-      console.log(this.data);
     },
   };
 </script>
