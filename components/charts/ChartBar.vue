@@ -1,11 +1,11 @@
 <script>
-  import { Bar } from 'vue-chartjs';
+  import { HorizontalBar } from 'vue-chartjs';
   export default {
-    extends: Bar,
+    extends: HorizontalBar,
     props: {
       data: {
         type: Object,
-        default: () => [],
+        default: () => {},
       },
     },
     mounted() {
